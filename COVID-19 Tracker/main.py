@@ -1,3 +1,4 @@
+import scipy.stats as stats
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -18,3 +19,11 @@ plt.title('Total confirmed cases by country')
 plt.xlabel('Country')
 plt.ylabel('Confirmed cases')
 plt.show()
+
+
+# perform a t-test to compare the total number of confirmed cases between two countries
+country1 = df.loc['US']
+country2 = df.loc['China']
+t, p = stats.ttest_ind(country1, country2)
+print('t-statistic:', t)
+print('p-value:', p)
