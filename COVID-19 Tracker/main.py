@@ -11,7 +11,7 @@ df = pd.read_csv(url)
 df.dropna(inplace=True)
 
 # aggregate the data at the country level
-df = df.groupby(['United States']).sum()
+df = df.groupby(['Country/region']).sum()
 
 # plot the total number of confirmed cases by country
 df_total = df.iloc[:, -1].sort_values(ascending=False)
