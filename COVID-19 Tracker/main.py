@@ -1,3 +1,4 @@
+import plotly.express as px
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -27,3 +28,10 @@ country2 = df.loc['China']
 t, p = stats.ttest_ind(country1, country2)
 print('t-statistic:', t)
 print('p-value:', p)
+
+
+# create a choropleth map to visualize the total number of confirmed cases by country
+fig = px.choropleth(df_total.reset_index(), locations='Country/Region', locationmode='country names',
+                    color=df_total.values, hover_name='Country/Region', color_continuous_scale='Reds',
+                    title='Total confirmed cases by country')
+fig.show()
