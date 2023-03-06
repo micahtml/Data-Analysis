@@ -20,4 +20,13 @@ for team in teams:
 df = pd.DataFrame(data)
 df.to_csv('nba_team_data.csv', index=False)
 
-# This code will create a pandas DataFrame containing team data, and then save it to a CSV file named nba_team_data.csv.
+# Remove duplicates: Check for and remove any duplicate records in your dataset, if any exist. This can be done using the drop_duplicates() method in pandas:
+df = df.drop_duplicates()
+
+# Handle missing values: Check for any missing or null values in your dataset and decide how to handle them. Depending on the situation, you could either fill in missing values with a default value or drop records with missing values. This can be done using the fillna() and dropna() methods in pandas:
+
+# fill missing values with 0
+df = df.fillna(0)
+
+# drop records with missing values
+df = df.dropna()
