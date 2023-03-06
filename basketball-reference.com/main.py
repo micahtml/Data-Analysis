@@ -27,3 +27,13 @@ for row in data_rows:
 # Create a pandas DataFrame from the extracted data
 df = pd.DataFrame(rows, columns=headers)
 print(df.head())
+
+# Remove duplicates
+df.drop_duplicates(inplace=True)
+
+# Remove any rows where all columns are empty
+df.dropna(how='all', inplace=True)
+
+# Convert the relevant columns to numeric data type
+df[['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']] = df[[
+    'G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']].astype(float)
