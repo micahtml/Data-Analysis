@@ -26,3 +26,7 @@ for stat_name, stat_col in stats_dict.items():
     plt.show()
 
 # This code will load your NBA team data into a pandas DataFrame, create a dictionary mapping statistical categories to the corresponding DataFrame columns, and then iterate over the statistical categories to create a bar chart showing the top player for each category.
+
+# The sort_values() method is used to sort the DataFrame by the statistical column in descending order, and then the bar() method is used to create a bar chart of the top player for the statistical category. The title() method is used to set the title of the chart, the xticks() method is used to rotate the x-axis labels for better visibility, and the show() method is used to display the chart.
+
+# This code will create a bar chart for each statistical category, showing the team and player leading in that category. You can use these charts to gain insights into player performance and identify which players are leading in each statistical category.
