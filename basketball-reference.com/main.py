@@ -1,32 +1,19 @@
-import requests
-from bs4 import BeautifulSoup
 import pandas as pd
 
-url = 'https://www.basketball-reference.com/leagues/NBA_2022_leaders.html'
+# Define the URL for the NBA season stat leaders data
+url = 'https://www.basketball-reference.com/leagues/NBA_2022_totals.html'
 
-# Send an HTTP GET request to the webpage
-response = requests.get(url)
+# Use pandas to read the HTML table into a DataFrame
+df = pd.read_html(url)[0]
 
-# Parse the HTML using Beautiful Soup
-soup = BeautifulSoup(response.content, 'html.parser')
+# Remove the "Rk" column
+df.drop('Rk', axis=1, inplace=True)
 
-# Find the table containing the NBA season stat leaders data
-table = soup.find('table', {'id': 'stats'})
+# Rename the "Unnamed: 1" column to "Player"
+df.rename(columns={'Unnamed: 1': 'Player'}, inplace=True)
 
-# Extract the column headers from the table
-headers = [th.get_text() for th in table.find('thead').find_all('th')]
-
-# Extract the data rows from the table
-data_rows = table.find('tbody').find_all('tr')
-rows = []
-for row in data_rows:
-    cols = row.find_all('td')
-    cols = [col.get_text() for col in cols]
-    rows.append(cols)
-
-# Create a pandas DataFrame from the extracted data
-df = pd.DataFrame(rows, columns=headers)
-print(df.head())
+# Remove the last 2 rows (total and league average)
+df.drop(df.tail(2).index, inplace=True)
 
 # Remove duplicates
 df.drop_duplicates(inplace=True)
@@ -35,5 +22,9 @@ df.drop_duplicates(inplace=True)
 df.dropna(how='all', inplace=True)
 
 # Convert the relevant columns to numeric data type
-df[['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']] = df[[
-    'G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']].astype(float)
+numeric_cols = ['MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA',
+                'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']
+df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
+
+# Print the cleaned DataFrame
+print(df)
