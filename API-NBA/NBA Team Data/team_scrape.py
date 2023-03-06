@@ -19,3 +19,5 @@ for team in teams:
 
 df = pd.DataFrame(data)
 df.to_csv('nba_team_data.csv', index=False)
+
+# This code will create a pandas DataFrame containing team data, and then save it to a CSV file named nba_team_data.csv.
