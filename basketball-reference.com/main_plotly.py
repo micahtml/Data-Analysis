@@ -31,8 +31,11 @@ df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
 df['MVP_Score'] = df['PTS'] + df['TRB'] + df['AST']
 mvp_df = df[['Player', 'Pos', 'Age', 'Tm', 'PTS', 'TRB', 'AST', 'MVP_Score']].sort_values('MVP_Score', ascending=False).head(5)
 
+# Print the top 5 MVP candidates
+print('Top 5 MVP Candidates in NBA 2023 Season')
+print(mvp_df)
+
 # Create a bar chart of the top 5 MVP candidates with their stats
-fig = px.bar(mvp_df, x='Player', y=[
-             'PTS', 'TRB', 'AST'], title='Top 5 MVP Candidates in NBA 2023 Season')
+fig = px.bar(mvp_df, x='Player', y=['PTS', 'TRB', 'AST'], title='Top 5 MVP Candidates in NBA 2023 Season')
 fig.update_layout(barmode='group')
 fig.show()
