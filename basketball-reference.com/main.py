@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 
 # Define the URL for the NBA season stat leaders data
 url = 'https://www.basketball-reference.com/leagues/NBA_2022_totals.html'
@@ -27,51 +27,21 @@ numeric_cols = ['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA',
                 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']
 df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
 
-# Select the top 10 scorers and sort by points in descending order
-df = df[['Player', 'Pos', 'Age', 'Tm', 'PTS']].sort_values(
-    'PTS', ascending=False).head(10)
+# Calculate a new "MVP score" column
+df['MVP score'] = (df['PTS'] / df['FGA']) + (df['TRB'] /
+                                             df['DRB']) + (df['AST'] / df['TOV'])
 
-# Create a bar chart of the top scorers
-plt.bar(df['Player'], df['PTS'])
-plt.title('Top 10 Scorers in NBA 2022 Season')
-plt.xlabel('Player')
-plt.ylabel('Total Points')
-plt.show()
+# Select the top 5 MVP candidates and sort by MVP score in descending order
+mvp_candidates = df[['Player', 'Pos', 'Age', 'Tm', 'PTS', 'TRB', 'AST',
+                     'MVP score']].sort_values('MVP score', ascending=False).head(5)
 
-# Select the top performers in each major stat category
-rebounds_leader = df[['Player', 'TRB']].sort_values(
-    'TRB', ascending=False).iloc[0]
-assists_leader = df[['Player', 'AST']].sort_values(
-    'AST', ascending=False).iloc[0]
-steals_leader = df[['Player', 'STL']].sort_values(
-    'STL', ascending=False).iloc[0]
-blocks_leader = df[['Player', 'BLK']].sort_values(
-    'BLK', ascending=False).iloc[0]
-
-# Create a bar chart of the rebounds leader
-plt.bar(rebounds_leader['Player'], rebounds_leader['TRB'])
-plt.title('Rebounds Leader in NBA 2022 Season')
-plt.xlabel('Player')
-plt.ylabel('Total Rebounds')
-plt.show()
-
-# Create a bar chart of the assists leader
-plt.bar(assists_leader['Player'], assists_leader['AST'])
-plt.title('Assists Leader in NBA 2022 Season')
-plt.xlabel('Player')
-plt.ylabel('Total Assists')
-plt.show()
-
-# Create a bar chart of the steals leader
-plt.bar(steals_leader['Player'], steals_leader['STL'])
-plt.title('Steals Leader in NBA 2022 Season')
-plt.xlabel('Player')
-plt.ylabel('Total Steals')
-plt.show()
-
-# Create a bar chart of the blocks leader
-plt.bar(blocks_leader['Player'], blocks_leader['BLK'])
-plt.title('Blocks Leader in NBA 2022 Season')
-plt.xlabel('Player')
-plt.ylabel('Total Blocks')
-plt.show()
+# Create a bar chart of the top MVP candidates
+fig = go.Figure(data=[
+    go.Bar(name='Points', x=mvp_candidates['Player'], y=mvp_candidates['PTS']),
+    go.Bar(name='Rebounds',
+           x=mvp_candidates['Player'], y=mvp_candidates['TRB']),
+    go.Bar(name='Assists', x=mvp_candidates['Player'], y=mvp_candidates['AST'])
+])
+fig.update_layout(
+    barmode='group', title='Top 5 MVP Candidates in NBA 2022 Season')
+fig.show()
