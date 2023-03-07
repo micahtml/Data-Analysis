@@ -34,6 +34,6 @@ mvp_df = df[['Player', 'Pos', 'Age', 'Tm', 'PTS', 'TRB', 'AST',
 
 # Create a bar chart of the top 5 MVP candidates with their stats
 fig = px.bar(mvp_df, x='Player', y=[
-             'PTS', 'TRB', 'AST'], title='Top 5 MVP Candidates in NBA 2022 Season')
+             'PTS', 'TRB', 'AST'], title='Top 5 MVP Candidates in NBA 2023 Season')
 fig.update_layout(barmode='group')
 fig.show()
