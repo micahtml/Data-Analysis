@@ -29,8 +29,7 @@ df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
 
 # Select the top 5 MVP candidates based on points, rebounds, and assists
 df['MVP_Score'] = df['PTS'] + df['TRB'] + df['AST']
-mvp_df = df[['Player', 'Pos', 'Age', 'Tm', 'PTS', 'TRB', 'AST',
-             'MVP_Score']].sort_values('MVP_Score', ascending=False).head(5)
+mvp_df = df[['Player', 'Pos', 'Age', 'Tm', 'PTS', 'TRB', 'AST', 'MVP_Score']].sort_values('MVP_Score', ascending=False).head(5)
 
 # Create a bar chart of the top 5 MVP candidates with their stats
 fig = px.bar(mvp_df, x='Player', y=[
