@@ -1,4 +1,4 @@
-# NBA Season Stat Analysis
+# NBA Season Stat Analysis (MVP Race)
 
 This project is a data analysis of the current NBA season's top players and their statistics. It includes visualizations of the top scorers, leaders in various stat categories, and top MVP candidates.
 
