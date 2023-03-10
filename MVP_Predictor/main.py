@@ -5,10 +5,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import accuracy_score
+import socket
 
 # Step 1: Data Collection
 url = 'https://www.reference-basketball.com/stats/players'
-response = requests.get(url)
+try:
+    response = requests.get(url)
+except requests.exceptions.RequestException as e:
+    print(e)
+    socket.setdefaulttimeout(60)
+    response = requests.get(url)
+
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # Extract the required data from the webpage
