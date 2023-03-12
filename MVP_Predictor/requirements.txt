@@ -1,7 +1,0 @@
-BeautifulSoup
-matplotlib
-pandas
-Python
-requests
-scikit-learn
-seaborn
