@@ -27,7 +27,3 @@ To use this program, you can follow these steps:
 5. To customize the analysis, modify the code in the "main.py" script.
 
 That's it! You can now use this program to analyze the performance of NBA players and predict the top MVP candidates based on their stats.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
