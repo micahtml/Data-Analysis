@@ -1,18 +1,29 @@
 # NBA Season Stat Analysis (MVP Race)
+# NBA MVP Performance Predictive Model
 
-This project is a data analysis of the current NBA season's top players and their statistics. It includes visualizations of the top scorers, leaders in various stat categories, and top MVP candidates.
+This is a Python program that analyzes the performance of NBA players and predicts the top MVP candidates based on their stats. It uses the pandas library to scrape NBA season stat leaders data from basketball-reference.com, and then performs data cleaning and exploratory data analysis using Plotly to create interactive charts.
 
-## How It Works
+## How it works
 
-The project is written in Python and uses the Pandas and Matplotlib libraries for data manipulation and visualization. The data is acquired from basketball-reference.com using web scraping techniques.
+1. **Data Acquisition:** The program collects NBA season stat leaders data from basketball-reference.com using pandas to read the HTML table into a DataFrame.
 
-The code is organized into three main steps:
+2. **Data Cleaning:** The program cleans the data by removing unnecessary columns, renaming columns, removing duplicates, and converting relevant columns to numeric data type.
 
-1. Data Acquisition: The NBA season stat leaders data is collected from basketball-reference.com using web scraping techniques.
+3. **Exploratory Data Analysis:** The program performs exploratory data analysis using Plotly to create interactive charts that display the top 10 scorers, leaders of each major stat category, and top 5 MVP candidates based on their points, rebounds, assists, games played, and minutes played.
 
-2. Data Cleaning: The collected data is cleaned and formatted into a Pandas dataframe for further analysis.
+4. **MVP Performance Prediction:** The program predicts the top MVP candidates based on their stats using a scoring system that adds up their points, rebounds, and assists.
 
-3. Exploratory Data Analysis: The cleaned data is analyzed and visualized using Matplotlib to identify the top scorers, leaders in various stat categories, and top MVP candidates.
+## How to use it
+
+To use this program, you can follow these steps:
+
+1. Clone the repository to your local machine.
+
+2. Open the terminal and navigate to the cloned repository.
+
+3. Install the required libraries using the following command:
+
+
 
 ## How to Use It
 
