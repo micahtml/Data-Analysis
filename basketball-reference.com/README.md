@@ -8,9 +8,9 @@ This is a Python program that analyzes the performance of NBA players and predic
 
 2. **Data Cleaning:** The program cleans the data by removing unnecessary columns, renaming columns, removing duplicates, and converting relevant columns to numeric data type.
 
-3. **Exploratory Data Analysis:** The program performs exploratory data analysis using Plotly to create interactive charts that display the top 10 scorers, leaders of each major stat category, and top 5 MVP candidates based on their points, rebounds, assists, games played, and minutes played.
+3. **Exploratory Data Analysis:** The program performs exploratory data analysis using Plotly to create interactive charts that display top 5 MVP candidates based on their points, rebounds, assists, games played, and minutes played.
 
-4. **MVP Performance Prediction:** The program predicts the top MVP candidates based on their stats using a scoring system that adds up their points, rebounds, and assists.
+4. **MVP Performance Prediction:** The program predicts the top MVP candidates based on their stats using a scoring system that adds up their points, rebounds, and assists, minutes & games played.
 
 ## How to use it
 
