@@ -1,5 +1,4 @@
-# NBA Season Stat Analysis (MVP Race)
-# NBA MVP Performance Predictive Model
+# NBA MVP Performance Based Predictive Model
 
 This is a Python program that analyzes the performance of NBA players and predicts the top MVP candidates based on their stats. It uses the pandas library to scrape NBA season stat leaders data from basketball-reference.com, and then performs data cleaning and exploratory data analysis using Plotly to create interactive charts.
 
@@ -21,23 +20,13 @@ To use this program, you can follow these steps:
 
 2. Open the terminal and navigate to the cloned repository.
 
-3. Install the required libraries using the following command:
+3. Install the required Python libraries using pip: Pandas and Matplotlib.
 
-
-
-## How to Use It
-
-To use the project, follow these steps:
-
-1. Clone the project repository.
-
-2. Install the required Python libraries using pip: Pandas and Matplotlib.
-
-3. Run the main script "main.py" to perform the data analysis and generate the visualizations.
-
-4. The output visualizations will be saved in the "output" directory.
+4. Run the main script "main.py" to perform the data analysis and generate the visualizations.
 
 5. To customize the analysis, modify the code in the "main.py" script.
+
+That's it! You can now use this program to analyze the performance of NBA players and predict the top MVP candidates based on their stats.
 
 ## License
 
